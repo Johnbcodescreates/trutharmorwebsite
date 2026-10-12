@@ -32,6 +32,7 @@
   }
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 76px; }
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background: var(--white);
@@ -51,6 +52,14 @@
   }
   .nav-link { color: var(--navy); font-size: 14px; font-weight: 500; text-decoration: none; opacity: 0.65; transition: opacity .2s; }
   .nav-link:hover { opacity: 1; }
+  .btn-primary.nav-cta { font-size: 14px; padding: 11px 22px; white-space: nowrap; }
+  @media (max-width: 480px) { .btn-primary.nav-cta { display: none; } nav > div:first-child { padding-left: 16px; padding-right: 16px; } }
+  @media (min-width: 1024px) { .menu-btn, .mobile-menu { display: none !important; } }
+  .mobile-menu .btn-primary { margin-top: 14px; justify-content: center; }
+  .menu-btn { width: 42px; height: 42px; border-radius: 12px; border: 1px solid rgba(12,26,56,0.12); background: #fff; color: var(--navy); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+  .mobile-menu { border-top: 1px solid rgba(12,26,56,0.06); padding: 8px 24px 16px; }
+  .mobile-menu:not([hidden]) { display: flex; flex-direction: column; }
+  .mobile-menu .nav-link { padding: 12px 0; font-size: 16px; opacity: .8; border-bottom: 1px solid rgba(12,26,56,0.05); }
   .logo-text { font-family: 'Lora', serif; font-size: 20px; font-weight: 700; color: var(--navy); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
 
   /* ── HERO ── */
@@ -65,6 +74,9 @@
       radial-gradient(ellipse 70% 60% at 85% 40%, rgba(13,127,110,0.22) 0%, transparent 65%),
       radial-gradient(ellipse 50% 50% at 15% 75%, rgba(20,168,144,0.10) 0%, transparent 60%);
   }
+  .hero-section { padding: 56px 0 88px; }
+  @media (min-width: 1024px) { .hero-section { padding: 64px 0 96px; } }
+  @media (max-width: 767px) { .hero-section { padding: 36px 0 72px; } }
   .hero-grid {
     background-image:
       linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
@@ -137,7 +149,7 @@
     background: radial-gradient(ellipse 70% 60% at 90% 10%, rgba(13,127,110,0.2) 0%, transparent 65%);
     pointer-events: none;
   }
-  .protect-card .emoji { font-size: 48px; margin-bottom: 20px; display: block; }
+  .protect-card .pc-icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(79,212,192,0.12); border: 1px solid rgba(79,212,192,0.25); color: #4fd4c0; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
   .protect-card h3 { color: #fff; font-size: 22px; margin-bottom: 12px; }
   .protect-card p { color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.75; font-family: 'Plus Jakarta Sans', sans-serif; }
   .protect-tag {
@@ -149,7 +161,7 @@
 
   /* ── PHONE MOCKUP ── */
   .phone-shell {
-    width: 230px; height: 460px;
+    width: 250px; height: 500px;
     background: #0a1020;
     border-radius: 38px;
     border: 6px solid #1e2d50;
@@ -178,6 +190,17 @@
 
   @keyframes floatPhone { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
   .float-phone { animation: floatPhone 5s ease-in-out infinite; }
+  @keyframes floatChip { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .float-chip { animation: floatChip 4s ease-in-out infinite .6s; z-index: 3; }
+  @media (max-width: 480px) { .float-chip { left: -20px; top: -22px; } }
+  @media (prefers-reduced-motion: reduce) { .float-phone, .float-chip, .fu { animation: none !important; } .reveal { opacity: 1; transform: none; } }
+
+  /* ── ICONS ── */
+  .lucide { display: inline-block; flex-shrink: 0; }
+  .feat-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .cat-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .glass-card:hover .feat-icon, .glass-card:hover .cat-icon { transform: scale(1.06); }
+  .feat-icon, .cat-icon { transition: transform .25s; }
 
   /* ── SCROLL REVEAL ── */
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
@@ -251,6 +274,17 @@
   .store-btn .store-label-small { font-size: 10px; opacity: 0.65; display: block; }
   .store-btn .store-label-big { font-size: 15px; font-weight: 700; display: block; }
 
+  /* ── DEVICE FRAME (app screenshot) ── */
+  .device-frame {
+    display: block; position: relative; width: 100%; max-width: 360px;
+    padding: 14px; padding-top: 40px; border-radius: 46px;
+    background: linear-gradient(160deg, #1d2a48 0%, #0a1020 100%);
+    box-shadow: 0 40px 80px rgba(12,26,56,0.28), inset 0 0 0 2px rgba(255,255,255,0.06);
+    transition: transform .3s;
+  }
+  .device-frame:hover { transform: translateY(-6px); }
+  .device-island { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 90px; height: 18px; border-radius: 12px; background: #05080f; }
+
   /* ── FOOTER ── */
   footer { background: #080f20; }
   footer a { color: rgba(255,255,255,0.5); font-size: 14px; text-decoration: none; transition: color .2s; }
@@ -276,7 +310,7 @@
 
   @media (max-width: 768px) {
     .phone-shell { width: 180px; height: 360px; }
-    .hero-phone-wrap { margin-top: 48px; }
+    .hero-phone-wrap { margin-top: 16px; }
   }
 </style>
 </head>
@@ -291,14 +325,27 @@
       <img src="images/logo-mark.png" alt="" width="44" height="38" style="display:block;height:38px;width:auto;" />
       <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:0.02em;text-transform:uppercase;"><span style="color:#0a1f44;">Truth</span><span style="color:#1a73e8;">Armor</span></span>
     </a>
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden lg:flex items-center gap-8">
       <a href="#protect" class="nav-link">Who We Protect</a>
       <a href="#how" class="nav-link">How It Works</a>
       <a href="#features" class="nav-link">Features</a>
       <a href="#risk" class="nav-link">Risk System</a>
       <a href="#developer" class="nav-link">Meet the Developer</a>
     </div>
-    <a href="https://trutharmor-29e91.web.app/" target="_blank" rel="noopener" class="btn-primary" style="font-size:14px;padding:11px 22px;">Download App</a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="https://trutharmor-29e91.web.app/" target="_blank" rel="noopener" class="btn-primary nav-cta">Download App</a>
+      <button type="button" class="menu-btn lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMenu(this)">
+        <svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu lg:hidden" hidden>
+      <a href="#protect" class="nav-link">Who We Protect</a>
+      <a href="#how" class="nav-link">How It Works</a>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#risk" class="nav-link">Risk System</a>
+      <a href="#developer" class="nav-link">Meet the Developer</a>
+      <a href="https://trutharmor-29e91.web.app/" target="_blank" rel="noopener" class="btn-primary">Download App</a>
   </div>
 </nav>
 
@@ -306,18 +353,18 @@
 <!-- ══════════════════════════════════════
      HERO
 ══════════════════════════════════════ -->
-<section class="hero-bg min-h-screen flex items-center py-24 relative">
+<section class="hero-bg hero-section relative">
   <div class="hero-grid"></div>
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
 
     <!-- Left: Copy -->
     <div>
-      <div class="fu fu1" style="display:inline-flex;align-items:center;gap:8px;background:rgba(13,127,110,0.18);border:1px solid rgba(13,127,110,0.3);border-radius:100px;padding:5px 14px 5px 10px;margin-bottom:28px;">
+      <div class="fu fu1" style="display:inline-flex;align-items:center;gap:8px;background:rgba(13,127,110,0.18);border:1px solid rgba(13,127,110,0.3);border-radius:100px;padding:5px 14px 5px 10px;margin-bottom:20px;">
         <span style="width:7px;height:7px;background:#14a890;border-radius:50%;display:inline-block;box-shadow:0 0 0 3px rgba(20,168,144,0.22);"></span>
         <span style="color:#4fd4c0;font-size:12px;font-weight:700;letter-spacing:0.04em;">Personal Digital Safety App</span>
       </div>
 
-      <h1 class="fu fu2" style="font-size:clamp(38px,5vw,60px);line-height:1.15;color:#ffffff;font-weight:700;margin-bottom:22px;">
+      <h1 class="fu fu2" style="font-size:clamp(38px,5vw,60px);line-height:1.15;color:#ffffff;font-weight:700;margin-bottom:18px;">
         Know Before<br />
         <em style="font-style:italic;color:#6ec9be;">You Trust.</em>
       </h1>
@@ -325,11 +372,11 @@
       <p class="fu fu3" style="font-size:18px;line-height:1.75;color:rgba(255,255,255,0.65);max-width:500px;margin-bottom:18px;">
         AI-powered protection to help you recognize scam warning signs before you click, respond, or send money.
       </p>
-      <p class="fu fu3" style="font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#4fd4c0;margin-bottom:36px;">
+      <p class="fu fu3" style="font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#4fd4c0;margin-bottom:28px;">
         Pause. Verify. Protect.
       </p>
 
-      <div class="fu fu4 flex flex-wrap gap-4" style="margin-bottom:48px;">
+      <div class="fu fu4 flex flex-wrap gap-4" style="margin-bottom:32px;">
         <a href="https://trutharmor-29e91.web.app/" target="_blank" rel="noopener" class="btn-primary">
           <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5z" fill="currentColor"/><path d="M5 18h14v2H5z" fill="currentColor"/></svg>
           Download App
@@ -342,10 +389,10 @@
 
       <!-- Who pills -->
       <div class="fu fu5" style="display:flex;flex-wrap:wrap;gap:10px;">
-        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:7px 14px;color:rgba(255,255,255,0.75);font-size:13px;font-weight:500;">👴 Seniors</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:7px 14px;color:rgba(255,255,255,0.75);font-size:13px;font-weight:500;">👦 Children &amp; Teens</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:7px 14px;color:rgba(255,255,255,0.75);font-size:13px;font-weight:500;">👨‍👩‍👧 Families</span>
-        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:7px 14px;color:rgba(255,255,255,0.75);font-size:13px;font-weight:500;">💼 Job Seekers</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:7px 14px;color:rgba(255,255,255,0.75);font-size:13px;font-weight:500;"><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4fd4c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/></svg>Seniors</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:7px 14px;color:rgba(255,255,255,0.75);font-size:13px;font-weight:500;"><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4fd4c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Children &amp; Teens</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:7px 14px;color:rgba(255,255,255,0.75);font-size:13px;font-weight:500;"><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4fd4c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Families</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:7px 14px;color:rgba(255,255,255,0.75);font-size:13px;font-weight:500;"><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4fd4c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Job Seekers</span>
       </div>
     </div>
 
@@ -358,7 +405,7 @@
           <div class="phone-screen">
             <div style="display:flex;justify-content:space-between;align-items:center;padding:2px 0;">
               <span style="color:rgba(255,255,255,0.6);font-size:11px;font-weight:700;">9:41</span>
-              <span style="color:rgba(255,255,255,0.4);font-size:9px;">⚡ 91%</span>
+              <span style="color:rgba(255,255,255,0.45);font-size:9px;display:inline-flex;align-items:center;gap:3px;"><svg class="lucide" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="10" x="2" y="7" rx="2"/><path d="M22 11v2"/><path d="M6 10v4M10 10v4M14 10v4"/></svg>91%</span>
             </div>
             <div class="phone-header">
               <div class="phone-header-sub"><img src="images/logo-mark.png" alt="" style="display:inline-block;height:14px;width:auto;vertical-align:-2px;margin-right:4px;" />TruthArmor</div>
@@ -410,9 +457,18 @@
           </div>
         </div>
 
+        <!-- Floating alert chip -->
+        <div class="float-chip" style="position:absolute;top:-18px;left:-64px;background:#fff;border-radius:14px;padding:9px 14px;box-shadow:0 8px 30px rgba(12,26,56,0.22);display:flex;align-items:center;gap:9px;">
+          <div style="width:30px;height:30px;background:var(--red-bg);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--red);"><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:#0c1a38;">Scam warning signs found</div>
+            <div style="font-size:10px;color:#6b7898;">Urgency + money request</div>
+          </div>
+        </div>
+
         <!-- Floating badge -->
         <div style="position:absolute;bottom:-16px;right:-28px;background:#fff;border-radius:14px;padding:10px 16px;box-shadow:0 8px 30px rgba(12,26,56,0.16);display:flex;align-items:center;gap:10px;">
-          <div style="width:34px;height:34px;background:rgba(13,127,110,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;">❤️</div>
+          <div style="width:34px;height:34px;background:rgba(13,127,110,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--teal);"><svg class="lucide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
           <div>
             <div style="font-size:11px;font-weight:700;color:#0c1a38;">Built for Families</div>
             <div style="font-size:10px;color:#6b7898;">No tech knowledge needed</div>
@@ -440,7 +496,7 @@
 
       <!-- Seniors -->
       <div class="protect-card senior reveal">
-        <span class="emoji">👴</span>
+        <div class="pc-icon"><svg class="lucide" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/></svg></div>
         <h3>Protecting Seniors</h3>
         <p>Older adults are increasingly targeted by banking scams, fake IRS calls, romance scams, phishing attacks, and financial manipulation. TruthArmor gives them a simple way to check before they respond.</p>
         <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:4px;">
@@ -453,7 +509,7 @@
 
       <!-- Children & Teens -->
       <div class="protect-card child reveal" style="transition-delay:.12s;">
-        <span class="emoji">👦</span>
+        <div class="pc-icon"><svg class="lucide" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
         <h3>Protecting Children &amp; Teens</h3>
         <p>TruthArmor helps families recognize online predators, grooming behavior, manipulation tactics, sextortion risks, and unsafe digital interactions before irreversible harm occurs.</p>
         <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:4px;">
@@ -466,7 +522,7 @@
 
       <!-- Families -->
       <div class="protect-card family reveal" style="transition-delay:.24s;">
-        <span class="emoji">👨‍👩‍👧</span>
+        <div class="pc-icon"><svg class="lucide" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Protecting Families</h3>
         <p>From phishing texts to identity theft and AI-generated scams, TruthArmor helps entire families make safer digital decisions in real time, with no technical expertise required.</p>
         <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:4px;">
@@ -543,25 +599,25 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
       <div class="glass-card p-7 reveal">
-        <div class="icon-box mb-5" style="background:rgba(13,127,110,0.08);font-size:26px;">💰</div>
+        <div class="icon-box mb-5" style="background:rgba(13,127,110,0.08);color:var(--teal);"><svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></div>
         <h3 style="font-size:17px;color:var(--navy);margin-bottom:8px;">Financial Exploitation</h3>
         <p style="color:var(--gray);font-size:14px;line-height:1.7;">Scammers pose as banks, government agencies, and family members to pressure victims into sending money or revealing account information.</p>
       </div>
 
       <div class="glass-card p-7 reveal" style="transition-delay:.08s;">
-        <div class="icon-box mb-5" style="background:rgba(217,58,74,0.07);font-size:26px;">💔</div>
+        <div class="icon-box mb-5" style="background:rgba(217,58,74,0.07);color:var(--red);"><svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="m12 13-1-1 2-2-3-3 2-2"/></svg></div>
         <h3 style="font-size:17px;color:var(--navy);margin-bottom:8px;">Emotional Manipulation</h3>
         <p style="color:var(--gray);font-size:14px;line-height:1.7;">Romance scammers and predators build trust over weeks or months before exploiting victims financially or psychologically.</p>
       </div>
 
       <div class="glass-card p-7 reveal" style="transition-delay:.16s;">
-        <div class="icon-box mb-5" style="background:rgba(232,152,0,0.08);font-size:26px;">🪪</div>
+        <div class="icon-box mb-5" style="background:rgba(232,152,0,0.08);color:var(--yellow);"><svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5 16c.5-1.5 1.7-2 3-2s2.5.5 3 2"/><path d="M14 10h5M14 14h3"/></svg></div>
         <h3 style="font-size:17px;color:var(--navy);margin-bottom:8px;">Identity Theft</h3>
         <p style="color:var(--gray);font-size:14px;line-height:1.7;">Once personal information is stolen, the damage compounds, affecting credit, finances, and reputation for years after the initial incident.</p>
       </div>
 
       <div class="glass-card p-7 reveal" style="transition-delay:.24s;">
-        <div class="icon-box mb-5" style="background:rgba(58,107,255,0.07);font-size:26px;">🤖</div>
+        <div class="icon-box mb-5" style="background:rgba(58,107,255,0.07);color:#3a6bff;"><svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg></div>
         <h3 style="font-size:17px;color:var(--navy);margin-bottom:8px;">AI-Generated Fraud</h3>
         <p style="color:var(--gray);font-size:14px;line-height:1.7;">Scammers now use AI to craft convincing fake emails, voice calls, and messages, making old warning signs unreliable.</p>
       </div>
@@ -643,49 +699,49 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 
       <div class="glass-card p-6 reveal">
-        <div style="font-size:28px;margin-bottom:14px;">🛡️</div>
+        <div class="feat-icon" style="background:rgba(13,127,110,0.09);color:var(--teal);"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3 style="font-size:16px;color:var(--navy);margin-bottom:8px;">Real-Time Scam Protection</h3>
         <p style="color:var(--gray);font-size:13px;line-height:1.65;">Recognize suspicious messages before sharing personal information or sending money.</p>
       </div>
 
       <div class="glass-card p-6 reveal" style="transition-delay:.07s;">
-        <div style="font-size:28px;margin-bottom:14px;">📸</div>
+        <div class="feat-icon" style="background:rgba(58,107,255,0.08);color:#3a6bff;"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 8h8M7 12h10M7 16h6"/></svg></div>
         <h3 style="font-size:16px;color:var(--navy);margin-bottom:8px;">Screenshot Analysis</h3>
         <p style="color:var(--gray);font-size:13px;line-height:1.65;">Upload a screenshot and get instant analysis. No retyping, no technical steps required.</p>
       </div>
 
       <div class="glass-card p-6 reveal" style="transition-delay:.14s;">
-        <div style="font-size:28px;margin-bottom:14px;">🟢</div>
+        <div class="feat-icon" style="background:rgba(26,173,120,0.1);color:var(--green);"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
         <h3 style="font-size:16px;color:var(--navy);margin-bottom:8px;">Simple Risk Guidance</h3>
         <p style="color:var(--gray);font-size:13px;line-height:1.65;">Easy color alerts (green, yellow, or red) help anyone quickly understand if something is dangerous.</p>
       </div>
 
       <div class="glass-card p-6 reveal" style="transition-delay:.21s;">
-        <div style="font-size:28px;margin-bottom:14px;">🔐</div>
+        <div class="feat-icon" style="background:rgba(122,79,214,0.09);color:#7a4fd6;"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <h3 style="font-size:16px;color:var(--navy);margin-bottom:8px;">Identity Protection Alerts</h3>
         <p style="color:var(--gray);font-size:13px;line-height:1.65;">Flags attempts to collect Social Security numbers, financial data, and personal information.</p>
       </div>
 
       <div class="glass-card p-6 reveal">
-        <div style="font-size:28px;margin-bottom:14px;">💼</div>
+        <div class="feat-icon" style="background:rgba(26,94,176,0.08);color:#1a5eb0;"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
         <h3 style="font-size:16px;color:var(--navy);margin-bottom:8px;">Job Scam Detection</h3>
         <p style="color:var(--gray);font-size:13px;line-height:1.65;">Identify fake recruiters, unrealistic offers, and data-harvesting schemes disguised as employment opportunities.</p>
       </div>
 
       <div class="glass-card p-6 reveal" style="transition-delay:.07s;">
-        <div style="font-size:28px;margin-bottom:14px;">❤️</div>
+        <div class="feat-icon" style="background:rgba(217,58,74,0.08);color:var(--red);"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
         <h3 style="font-size:16px;color:var(--navy);margin-bottom:8px;">Romance Scam Awareness</h3>
         <p style="color:var(--gray);font-size:13px;line-height:1.65;">Detect emotional manipulation, financial exploitation tactics, and the warning signs of relationship-based fraud.</p>
       </div>
 
       <div class="glass-card p-6 reveal" style="transition-delay:.14s;">
-        <div style="font-size:28px;margin-bottom:14px;">🧒</div>
+        <div class="feat-icon" style="background:rgba(232,152,0,0.1);color:var(--yellow);"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3 style="font-size:16px;color:var(--navy);margin-bottom:8px;">Child Safety Monitoring</h3>
         <p style="color:var(--gray);font-size:13px;line-height:1.65;">Help parents identify grooming behavior, online predator patterns, and dangerous digital interactions.</p>
       </div>
 
       <div class="glass-card p-6 reveal" style="transition-delay:.21s;">
-        <div style="font-size:28px;margin-bottom:14px;">🎣</div>
+        <div class="feat-icon" style="background:rgba(217,98,58,0.09);color:#d9623a;"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12.5"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="M20 14v4"/><path d="M20 22v.01"/></svg></div>
         <h3 style="font-size:16px;color:var(--navy);margin-bottom:8px;">Phishing &amp; Fraud Detection</h3>
         <p style="color:var(--gray);font-size:13px;line-height:1.65;">Check suspicious emails, texts, and websites before clicking any links or entering credentials.</p>
       </div>
@@ -711,7 +767,7 @@
       <!-- Green -->
       <div class="risk-card-outer g reveal">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
-          <div style="width:44px;height:44px;background:rgba(26,173,120,0.14);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;">✅</div>
+          <div style="width:44px;height:44px;background:rgba(26,173,120,0.14);border-radius:13px;display:flex;align-items:center;justify-content:center;color:var(--green);"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
           <div>
             <div style="font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--green);font-weight:800;margin-bottom:2px;">Low Risk</div>
             <div style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--navy);">All Clear</div>
@@ -726,7 +782,7 @@
       <!-- Yellow -->
       <div class="risk-card-outer y reveal" style="transition-delay:.12s;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
-          <div style="width:44px;height:44px;background:rgba(232,152,0,0.12);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;">⚠️</div>
+          <div style="width:44px;height:44px;background:rgba(232,152,0,0.12);border-radius:13px;display:flex;align-items:center;justify-content:center;color:var(--yellow);"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
           <div>
             <div style="font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--yellow);font-weight:800;margin-bottom:2px;">Caution</div>
             <div style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--navy);">Proceed Carefully</div>
@@ -741,7 +797,7 @@
       <!-- Red -->
       <div class="risk-card-outer r reveal" style="transition-delay:.24s;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
-          <div style="width:44px;height:44px;background:rgba(217,58,74,0.12);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;">🚨</div>
+          <div style="width:44px;height:44px;background:rgba(217,58,74,0.12);border-radius:13px;display:flex;align-items:center;justify-content:center;color:var(--red);"><svg class="lucide" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></div>
           <div>
             <div style="font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--red);font-weight:800;margin-bottom:2px;">High Risk</div>
             <div style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--navy);">Stop Immediately</div>
@@ -771,7 +827,7 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
       <div class="glass-card p-7 reveal" style="display:flex;gap:18px;align-items:flex-start;">
-        <span style="font-size:28px;flex-shrink:0;">💼</span>
+        <div class="cat-icon" style="background:rgba(26,94,176,0.08);color:#1a5eb0;"><svg class="lucide" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
         <div>
           <h3 style="font-size:16px;color:var(--navy);margin-bottom:6px;">Job or Work Opportunity</h3>
           <p style="color:var(--gray);font-size:13px;line-height:1.65;">Fake job listings collect personal and financial information from job seekers who just want honest work.</p>
@@ -779,7 +835,7 @@
       </div>
 
       <div class="glass-card p-7 reveal" style="display:flex;gap:18px;align-items:flex-start;transition-delay:.07s;">
-        <span style="font-size:28px;flex-shrink:0;">✉️</span>
+        <div class="cat-icon" style="background:rgba(217,98,58,0.09);color:#d9623a;"><svg class="lucide" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
         <div>
           <h3 style="font-size:16px;color:var(--navy);margin-bottom:6px;">Email or Text Message</h3>
           <p style="color:var(--gray);font-size:13px;line-height:1.65;">Phishing campaigns use urgency and spoofed identities to steal credentials and financial data from inboxes.</p>
@@ -787,7 +843,7 @@
       </div>
 
       <div class="glass-card p-7 reveal" style="display:flex;gap:18px;align-items:flex-start;transition-delay:.14s;">
-        <span style="font-size:28px;flex-shrink:0;">🏦</span>
+        <div class="cat-icon" style="background:rgba(13,127,110,0.09);color:var(--teal);"><svg class="lucide" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h18"/><path d="M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2 20 7H4z"/></svg></div>
         <div>
           <h3 style="font-size:16px;color:var(--navy);margin-bottom:6px;">Bank or Payment Message</h3>
           <p style="color:var(--gray);font-size:13px;line-height:1.65;">Fraudulent bank alerts create panic and pressure victims into sending money or sharing account details.</p>
@@ -795,7 +851,7 @@
       </div>
 
       <div class="glass-card p-7 reveal" style="display:flex;gap:18px;align-items:flex-start;transition-delay:.07s;">
-        <span style="font-size:28px;flex-shrink:0;">🏛️</span>
+        <div class="cat-icon" style="background:rgba(122,79,214,0.09);color:#7a4fd6;"><svg class="lucide" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div>
         <div>
           <h3 style="font-size:16px;color:var(--navy);margin-bottom:6px;">Tax or Government Notice</h3>
           <p style="color:var(--gray);font-size:13px;line-height:1.65;">IRS and government impersonators threaten legal action to extract money or sensitive identification data.</p>
@@ -803,7 +859,7 @@
       </div>
 
       <div class="glass-card p-7 reveal" style="display:flex;gap:18px;align-items:flex-start;transition-delay:.14s;">
-        <span style="font-size:28px;flex-shrink:0;">💬</span>
+        <div class="cat-icon" style="background:rgba(217,58,74,0.08);color:var(--red);"><svg class="lucide" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
         <div>
           <h3 style="font-size:16px;color:var(--navy);margin-bottom:6px;">Online Relationship</h3>
           <p style="color:var(--gray);font-size:13px;line-height:1.65;">Romance scammers build emotional trust over weeks before exploiting victims financially or psychologically.</p>
@@ -811,7 +867,7 @@
       </div>
 
       <div class="glass-card p-7 reveal" style="display:flex;gap:18px;align-items:flex-start;transition-delay:.21s;">
-        <span style="font-size:28px;flex-shrink:0;">🌐</span>
+        <div class="cat-icon" style="background:rgba(58,107,255,0.08);color:#3a6bff;"><svg class="lucide" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
         <div>
           <h3 style="font-size:16px;color:var(--navy);margin-bottom:6px;">Website or Link</h3>
           <p style="color:var(--gray);font-size:13px;line-height:1.65;">Clone websites mimic trusted brands to capture login credentials or install harmful software on your device.</p>
@@ -819,7 +875,7 @@
       </div>
 
       <div class="glass-card p-7 reveal md:col-span-2 lg:col-span-1" style="display:flex;gap:18px;align-items:flex-start;transition-delay:.07s;">
-        <span style="font-size:28px;flex-shrink:0;">🧒</span>
+        <div class="cat-icon" style="background:rgba(232,152,0,0.1);color:var(--yellow);"><svg class="lucide" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></div>
         <div>
           <h3 style="font-size:16px;color:var(--navy);margin-bottom:6px;">Child Safety</h3>
           <p style="color:var(--gray);font-size:13px;line-height:1.65;">Protect children from grooming, predatory contact, and dangerous online interactions before harm occurs.</p>
@@ -842,8 +898,9 @@
       <p style="font-size:17px;color:var(--gray);max-width:520px;margin:0 auto;line-height:1.7;">Pick the situation you're dealing with, such as a job offer, a bank message, a link, or an online relationship, and TruthArmor walks you through it.</p>
     </div>
     <div class="reveal" style="display:flex;justify-content:center;">
-      <a href="https://trutharmor-29e91.web.app/" target="_blank" rel="noopener" style="display:block;max-width:420px;width:100%;border-radius:24px;overflow:hidden;border:1px solid rgba(15,30,60,0.08);box-shadow:0 24px 60px rgba(15,30,60,0.18);background:#fff;">
-        <img src="images/app-screenshot.png" alt="TruthArmor app home screen: Quick Scan, who you're protecting, and situations to check such as job offers, bank payments, government messages, emails, links, and online relationships" style="display:block;width:100%;height:auto;" loading="lazy" />
+      <a href="https://trutharmor-29e91.web.app/" target="_blank" rel="noopener" class="device-frame">
+        <span class="device-island" aria-hidden="true"></span>
+        <img src="images/app-screenshot.png" alt="TruthArmor app home screen: Quick Scan, who you're protecting, and situations to check such as job offers, bank payments, government messages, emails, links, and online relationships" style="display:block;width:100%;height:auto;border-radius:30px;" loading="lazy" />
       </a>
     </div>
   </div>
@@ -866,9 +923,9 @@
         <p style="font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:16px;"><strong style="color:var(--navy);">John I. Bolden II</strong> is a young innovator, author, and technology developer who created TruthArmor. A freshman in high school, John is passionate about exploring emerging technologies and developing solutions that make a meaningful impact.</p>
         <p style="font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:24px;">He is also the author of <em>John B and the Wonderful World of Coding</em>. His interests include robotics, nanotechnology, and regenerative medicine, reflecting his curiosity about how science and technology can shape the future.</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;">
-          <span style="background:rgba(13,127,110,0.1);color:var(--teal);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:600;">🤖 Robotics</span>
-          <span style="background:rgba(13,127,110,0.1);color:var(--teal);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:600;">🔬 Nanotechnology</span>
-          <span style="background:rgba(13,127,110,0.1);color:var(--teal);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:600;">🧬 Regenerative Medicine</span>
+          <span style="background:rgba(13,127,110,0.1);color:var(--teal);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;"><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg>Robotics</span>
+          <span style="background:rgba(13,127,110,0.1);color:var(--teal);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;"><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg>Nanotechnology</span>
+          <span style="background:rgba(13,127,110,0.1);color:var(--teal);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;"><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 15c6.667-6 13.333 0 20-6"/><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"/><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"/><path d="m17 6-2.5-2.5"/><path d="m14 8-1-1"/><path d="m7 18 2.5 2.5"/><path d="m3.5 14.5.5.5"/><path d="m20 9 .5.5"/><path d="m6.5 12.5 1 1"/><path d="m16.5 10.5 1 1"/><path d="m10 16 1.5 1.5"/></svg>Regenerative Medicine</span>
         </div>
       </div>
     </div>
@@ -982,6 +1039,17 @@
   revealEls.forEach(el => obs.observe(el));
 
   // Waitlist handler
+  function toggleMenu(btn) {
+    const menu = document.getElementById('mobile-menu');
+    const open = menu.hasAttribute('hidden');
+    menu.toggleAttribute('hidden', !open);
+    btn.setAttribute('aria-expanded', String(open));
+  }
+  document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('mobile-menu').setAttribute('hidden', '');
+    document.querySelector('.menu-btn').setAttribute('aria-expanded', 'false');
+  }));
+
   // Google Apps Script web app that adds each email to the waitlist Google Sheet
   const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbx8yk1ixtPEeBaSA6LR_rdNQr_lUvaKdESuKSNlHqvl_YAyR1oICf_Dcez4juAMjaH4/exec';
 

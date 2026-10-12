@@ -976,6 +976,9 @@
   revealEls.forEach(el => obs.observe(el));
 
   // Waitlist handler
+  // Google Apps Script web app that adds each email to the waitlist Google Sheet
+  const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbx8yk1ixtPEeBaSA6LR_rdNQr_lUvaKdESuKSNlHqvl_YAyR1oICf_Dcez4juAMjaH4/exec';
+
   function handleWait(btn) {
     const input = btn.previousElementSibling;
     const val = input.value.trim();
@@ -988,11 +991,20 @@
       }, 2200);
       return;
     }
-    btn.textContent = "✓ You're on the list!";
-    btn.style.background = '#1aad78';
     btn.disabled = true;
     input.disabled = true;
-    input.style.opacity = '.45';
+    btn.textContent = 'Adding...';
+    fetch(WAITLIST_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ email: val }) })
+      .then(() => {
+        btn.textContent = "✓ You're on the list!";
+        btn.style.background = '#1aad78';
+        input.style.opacity = '.45';
+      })
+      .catch(() => {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+        input.disabled = false;
+      });
   }
 </script>
 </body>

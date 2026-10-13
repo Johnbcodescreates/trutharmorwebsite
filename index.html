@@ -285,6 +285,18 @@
   .device-frame:hover { transform: translateY(-6px); }
   .device-island { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 90px; height: 18px; border-radius: 12px; background: #05080f; }
 
+  /* ── SPOT THE SIGNS ── */
+  .sign-card { background: #fff; border: 1px solid rgba(12,26,56,0.07); border-radius: 22px; overflow: hidden; box-shadow: 0 2px 20px rgba(12,26,56,0.05); display: flex; flex-direction: column; transition: box-shadow .25s, transform .25s; }
+  .sign-card:hover { box-shadow: 0 16px 44px rgba(12,26,56,0.13); transform: translateY(-4px); }
+  .sign-img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--soft); }
+  .sign-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
+  .sign-card:hover .sign-img img { transform: scale(1.04); }
+  .sign-body { padding: 22px 24px 24px; }
+  .sign-body h3 { font-size: 18px; color: var(--navy); margin-bottom: 12px; }
+  .sign-flags { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .sign-flags li { display: flex; gap: 9px; align-items: flex-start; font-size: 14px; line-height: 1.55; color: #3a4460; }
+  .sign-flags li svg { color: var(--red); margin-top: 3px; }
+
   /* ── FOOTER ── */
   footer { background: #080f20; }
   footer a { color: rgba(255,255,255,0.5); font-size: 14px; text-decoration: none; transition: color .2s; }
@@ -622,6 +634,64 @@
         <p style="color:var(--gray);font-size:14px;line-height:1.7;">Scammers now use AI to craft convincing fake emails, voice calls, and messages, making old warning signs unreliable.</p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SPOT THE SIGNS (photos)
+══════════════════════════════════════ -->
+<section id="signs" style="background:var(--soft);padding:96px 0;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <div class="section-label">Spot the Signs</div>
+      <h2 style="font-size:clamp(30px,4vw,46px);color:var(--navy);margin-bottom:16px;">Real Scams. Real Warning Signs.</h2>
+      <p style="font-size:17px;color:var(--gray);max-width:540px;margin:0 auto;line-height:1.7;">Scams look different for everyone. These are the red flags TruthArmor helps you catch before you click, respond, or send money.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-6">
+      <article class="sign-card reveal lg:col-span-2" style="transition-delay:0.00s;">
+        <div class="sign-img"><img src="images/scam-government-email.jpg" alt="A woman reading an email from a fake bank demanding $5,000 in Bitcoin or jail" loading="lazy" width="900" height="900" /></div>
+        <div class="sign-body">
+          <h3>Bank &amp; Government Impersonation</h3>
+          <ul class="sign-flags"><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Threats of jail or legal action</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Payment demanded in Bitcoin or gift cards</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Odd sender address and a 24-hour deadline</span></li></ul>
+        </div>
+      </article>
+
+      <article class="sign-card reveal lg:col-span-2" style="transition-delay:0.08s;">
+        <div class="sign-img"><img src="images/scam-romance.jpg" alt="A man reading a dating chat where a new match asks him for $1,000" loading="lazy" width="900" height="900" /></div>
+        <div class="sign-body">
+          <h3>Romance Scams</h3>
+          <ul class="sign-flags"><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>A perfect profile and a fast emotional bond</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>A sudden emergency that needs money</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Guilt: "If you really care about me..."</span></li></ul>
+        </div>
+      </article>
+
+      <article class="sign-card reveal lg:col-span-2" style="transition-delay:0.16s;">
+        <div class="sign-img"><img src="images/scam-fake-job.jpg" alt="A man looking at a job listing promising $4,500 a week with a $99 training fee" loading="lazy" width="900" height="900" /></div>
+        <div class="sign-body">
+          <h3>Fake Job Offers</h3>
+          <ul class="sign-flags"><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Pay that is too good to be true</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>An upfront "training fee"</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Bank details requested before you are hired</span></li></ul>
+        </div>
+      </article>
+
+      <article class="sign-card reveal lg:col-span-3" style="transition-delay:0.00s;">
+        <div class="sign-img"><img src="images/scam-seniors.jpg" alt="A group of older adults at a community center reviewing a scam on a laptop together" loading="lazy" width="900" height="900" /></div>
+        <div class="sign-body">
+          <h3>Scams Targeting Seniors</h3>
+          <ul class="sign-flags"><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Urgent calls about money or a family member</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Requests to keep it secret</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Pressure to act before you can talk to anyone</span></li></ul>
+        </div>
+      </article>
+
+      <article class="sign-card reveal md:col-span-2 lg:col-span-3" style="transition-delay:0.08s;">
+        <div class="sign-img"><img style="object-position:center 12%;" src="images/scam-fake-teen-profile.jpg" alt="Split image of a teen girl chatting with "Ethan, 16," whose profile is really run by an adult man" loading="lazy" width="900" height="900" /></div>
+        <div class="sign-body">
+          <h3>Fake Profiles Targeting Teens</h3>
+          <ul class="sign-flags"><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Adults pretending to be teens</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Fast friendship and pressure to keep chats private</span></li><li><svg class="lucide" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span>Requests for photos, secrets, or personal details</span></li></ul>
+        </div>
+      </article>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:44px;">
+      <a href="https://trutharmor-29e91.web.app/" target="_blank" rel="noopener" class="btn-primary">Check a Message Now</a>
     </div>
   </div>
 </section>
